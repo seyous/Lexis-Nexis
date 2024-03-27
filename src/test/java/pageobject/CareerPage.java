@@ -6,7 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utility.Hook;
+
+import java.time.Duration;
 
 public class CareerPage {
 
@@ -33,6 +37,8 @@ public class CareerPage {
     }
 
     public void SendkeysToSearchBox(String searchResult) {
+        WebDriverWait wait = new WebDriverWait(Hook.driver, Duration.ofSeconds(60));
+        wait.until(ExpectedConditions.visibilityOf(searchTextbox));
         searchTextbox.sendKeys(searchResult, Keys.TAB);
     }
 
